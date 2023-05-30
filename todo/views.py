@@ -14,7 +14,7 @@ class Top(generic.TemplateView):
 class TodoList(generic.ListView):
     model = Todo
     template_name = 'todo/todo_list.html'
-    paginate_by = 5
+    paginate_by = 7
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -23,13 +23,13 @@ class TodoList(generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Todo.objects.order_by('deadline', 'category', '-updated_at')
+        queryset = Todo.objects.order_by('-updated_at', 'category', 'deadline')
         q_keyword = self.request.GET.get('keyword')
         if q_keyword:
             queryset = queryset.filter(
                 Q(title__icontains=q_keyword) | Q(content__icontains=q_keyword)
                 | Q(reply__comment__icontains=q_keyword)
-            )
+            ).distinct()
         return queryset
 
 

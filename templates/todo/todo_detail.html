@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>詳細</h1>
-    <h2><b>{{ todo.title }}</b></h2>
-    <p>作成日時：{{ todo.created_at }}</p>
-    <p>更新日時：{{ todo.updated_at }}</p>
-    <a href="{% url 'todo:todo_update' todo.pk %}">更新</a>
-    <a href="{% url 'todo:todo_delete' todo.pk %}">削除</a>
-    <table>
-        <tr><th>進捗状況：</th><td>{{ todo.status }}</td></tr>
-        <tr><th>カテゴリ：</th><td>{{ todo.category }}</td></tr>
-        <tr><th>締め切り：</th><td>{{ todo.deadline }}</td></tr>
-        <tr><th>内容説明：</th><td>{{ todo.content | linebreaksbr }}</td></tr>
-    </table>
-    <a href="{% url 'todo:reply_create' todo.pk %}">コメント</a>
-    {% for reply in todo.reply_set.all %}
-        <div>
-            ↪ {{ reply.created_at | date:'Y/m/d H:i s秒'}}<br>{{ reply.comment | linebreaksbr }}
+<div class="center">
+    <h1>{{ todo.title }} の詳細</h1>
+    <div class="flex_box">
+        <table class="detail_table">
+            <tr><th>ToDo名：</th><td>{{ todo.title }}</td></tr>
+            <tr><th>作成日時：</th><td>{{ todo.created_at }}</td></tr>
+            <tr><th>更新日時：</th><td>{{ todo.updated_at }}</td></tr>
+            <tr><th>進捗状況：</th><td>{{ todo.status }}</td></tr>
+            <tr><th>カテゴリ：</th><td>{{ todo.category }}</td></tr>
+            <tr><th>締め切り：</th><td>{{ todo.deadline }}</td></tr>
+            <tr><th>内容説明：</th><td>{{ todo.content | linebreaksbr }}</td></tr>
+        </table>
+        <div class="right">
+            <a href="{% url 'todo:todo_update' todo.pk %}">更新</a>
+            <a href="{% url 'todo:todo_delete' todo.pk %}">削除</a>
+            <a href="{% url 'todo:reply_create' todo.pk %}">コメント</a>
+            {% for reply in todo.reply_set.all %}
+                <div class="comment">
+                    ↪ {{ reply.created_at | date:'Y/m/d H:i s秒'}}<br>{{ reply.comment | linebreaksbr }}
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+</div>
 {% endblock %}

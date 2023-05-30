@@ -1,27 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Task一覧（全{{ todo_count }}件）</h1>
-<form method="GET">
-    {{ form.as_div  }}<button type="submit">検索</button>
-</form>
-{% for todo in todo_list %}
-    <div>
-        <a href="{% url 'todo:todo_detail' todo.id %}"><b>{{ todo.title }}</b></a>
-        {% if todo.deadline is not None %}
-            <span>---〆切：{{ todo.deadline | date:"Y/m/d H:i"}}</span>
-        {% endif %}
-        <div>
-            {% if todo.category is not None %}
+<div class="center">
+    <h1>Task一覧（全{{ todo_count }}件）</h1>
+    <form method="GET" class="flex_box">
+        {{ form.as_div  }}<button type="submit">検索</button>
+    </form>
+    <table class="list_th">
+        <tr>
+            <th>ToDo</th>
+            <th>締切日</th>
+            <th>カテゴリ</th>
+            <th>更新日時</th>
+        </tr>
+    </table>
+    {% for todo in todo_list %}
+    <table class="list_td">
+        <tr>
+            <td><a href="{% url 'todo:todo_detail' todo.id %}">{{ todo.title }}</a></td>
+            <td>{% if todo.deadline is not None %}
+                {{ todo.deadline | date:"Y/m/d H:i"}}
+                {% endif %}</td>
+            <td>{% if todo.category is not None %}
                 {{ todo.category }}
-            {% endif %}
-        </div>
-        <div>
-            更新日時：{{ todo.updated_at }}
-        </div>
-    </div>
-    <hr>
+                {% endif %}</td>
+            <td>{{ todo.updated_at }}</td>
+        </tr>
+    </table>
 {% endfor %}
+</div>
 
 <!--ページネーション-->
 <div id="page">
@@ -41,7 +48,7 @@
     {% if page_obj.has_next %}
         <a href="?{%  url_replace request 'page' page_obj.next_page_number %}">次のページへ</a>
     {% endif %}
-</div>
 <!--/ページネーション-->
-{{ todo_count }} 件中 {{ todo_list.count }} 件を表示
+    <p>{{ todo_count }} 件中 {{ todo_list.count }} 件を表示</p>
+</div>
 {% endblock %}

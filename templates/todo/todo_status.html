@@ -1,68 +1,72 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>進捗状況</h1>
-<progress value="{{ done_count }}" max="{{ todo_count }}"></progress>{{ done_count }}/{{ todo_count }}
-<script>
-    document.write(Math.round({{ done_count }}/{{ todo_count }}*100),'%');
-</script>
-<div class="flex_box">
-    <div class="flex_item">
-        <h2>Waitingタスク</h2>
-        <p>（{{ waiting_count }}件）</p>
-        {% for todo in waiting_list %}
-            <ul class="items"><li>
-                <a href="{% url 'todo:todo_detail' todo.id %}">
-                {% if todo.category is not None %}
-                    <div class="right">
-                        <p class="priority">{{ todo.category }}</p>
-                    </div>
-                {% endif %}
-                {{ todo.title }}
-                {% if todo.deadline is not None %}
-                    <p>〆切：{{ todo.deadline | date:"Y/m/d H:i"}}</p>
-                {% endif %}
-                </a>
-            </li></ul>
-        {% endfor %}
-    </div>
-    <div class="flex_item">
-        <h2>Workingタスク</h2>
-        <p>（{{ working_count }}件）</p>
-        {% for todo in working_list %}
-            <ul class="items"><li>
-                <a href="{% url 'todo:todo_detail' todo.id %}">
-                {% if todo.category is not None %}
-                    <div class="right">
-                        <p class="priority">{{ todo.category }}</p>
-                    </div>
-                {% endif %}
-                {{ todo.title }}
-                {% if todo.deadline is not None %}
-                    <p>〆切：{{ todo.deadline | date:"Y/m/d H:i"}}</p>
-                {% endif %}
-                </a>
-            </li></ul>
-        {% endfor %}
-    </div>
-    <div class="flex_item">
-        <h2>Doneタスク</h2>
-        <p>（{{ done_count }}件）</p>
-        {% for todo in done_list %}
-            <ul class="items"><li>
-                <a href="{% url 'todo:todo_detail' todo.id %}">
-                {% if todo.category is not None %}
-                    <div class="right">
-                        <p class="priority">{{ todo.category }}</p>
-                    </div>
-                {% endif %}
-                {{ todo.title }}
-                {% if todo.deadline is not None %}
-                    <p>〆切：{{ todo.deadline | date:"Y/m/d H:i"}}</p>
-                {% endif %}
-                </a>
-            </li></ul>
-        {% endfor %}
+<div class="center">
+    <h1>進捗状況</h1>
+
+
+    <progress value="{{ done_count }}" max="{{ todo_count }}"></progress>{{ done_count }}/{{ todo_count }}
+    <script>
+        document.write(Math.round({{ done_count }}/{{ todo_count }}*100),'%');
+    </script>
+    <div class="flex_box">
+        <div class="flex_item">
+            <h2>Waitingタスク</h2>
+            <p>（{{ waiting_count }}件）</p>
+            {% for todo in waiting_list %}
+                <ul class="items"><li>
+                    <a href="{% url 'todo:todo_detail' todo.id %}">
+                    {% if todo.category is not None %}
+                        <div class="category">
+                            <p class="priority">{{ todo.category }}</p>
+                        </div>
+                    {% endif %}
+                    {{ todo.title }}
+                    {% if todo.deadline is not None %}
+                        <p>〆切：{{ todo.deadline | date:"Y/m/d H:i"}}</p>
+                    {% endif %}
+                    </a>
+                </li></ul>
+            {% endfor %}
+        </div>
+        <div class="flex_item">
+            <h2>Workingタスク</h2>
+            <p>（{{ working_count }}件）</p>
+            {% for todo in working_list %}
+                <ul class="items"><li>
+                    <a href="{% url 'todo:todo_detail' todo.id %}">
+                    {% if todo.category is not None %}
+                        <div class="category">
+                            <p class="priority">{{ todo.category }}</p>
+                        </div>
+                    {% endif %}
+                    {{ todo.title }}
+                    {% if todo.deadline is not None %}
+                        <p>〆切：{{ todo.deadline | date:"Y/m/d H:i"}}</p>
+                    {% endif %}
+                    </a>
+                </li></ul>
+            {% endfor %}
+        </div>
+        <div class="flex_item">
+            <h2>Doneタスク</h2>
+            <p>（{{ done_count }}件）</p>
+            {% for todo in done_list %}
+                <ul class="items"><li>
+                    <a href="{% url 'todo:todo_detail' todo.id %}">
+                    {% if todo.category is not None %}
+                        <div class="category">
+                            <p class="priority">{{ todo.category }}</p>
+                        </div>
+                    {% endif %}
+                    {{ todo.title }}
+                    {% if todo.deadline is not None %}
+                        <p>〆切：{{ todo.deadline | date:"Y/m/d H:i"}}</p>
+                    {% endif %}
+                    </a>
+                </li></ul>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}

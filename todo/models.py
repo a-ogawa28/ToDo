@@ -19,7 +19,7 @@ class Category(models.Model):
 
 
 class Todo(models.Model):
-    title      = models.CharField('タイトル', max_length=50)
+    title      = models.CharField('ToDo名', max_length=50)
     status     = models.ForeignKey(Status, verbose_name='進捗状況', on_delete=models.PROTECT, default=1)
     deadline   = models.DateTimeField('締め切り', null=True, blank=True)
     content    = models.TextField('内容説明', null=True, blank=True)

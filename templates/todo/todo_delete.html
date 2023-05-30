@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post">
+<form method="post" class="center">
     {% csrf_token %}
-    <p>"{{ todo.title }}"を削除してもよろしいですか?</p>
-    <input type="submit" value="削除">
+    <h1>"{{ todo.title }}"を削除してもよろしいですか?</h1>
+    <input type="submit" value="削除" class="button">
 </form>
 {% endblock %}
