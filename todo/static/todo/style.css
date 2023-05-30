@@ -1,0 +1,95 @@
+/* 全体 */
+* {
+    margin: 0;
+    padding: 0;
+}
+#page {
+    padding: 10px;
+}
+#menu {
+    background-color: #eee;
+    padding: 10px;
+}
+#menu > a {
+    color: #000;
+}
+table{
+  width: 50%;
+  border-collapse: collapse;
+}
+table th{
+  padding: 10px;
+  text-align: left;
+  width: auto;
+}
+table td{
+  padding: 10px;
+  text-align: left;
+  width: auto;
+}
+table tr:nth-child(odd){
+  background-color: #eee
+}
+
+/* 進捗状況ページ */
+.flex_box {
+    display: flex;              /* フレックスボックスにする */
+    background-color: #fff;     /* 背景色指定 */
+    padding: 30px;              /* 余白指定 */
+    margin: 20px;               /* 外側の余白 */
+    border-radius: 5px;         /* 角丸指定 */
+    justify-content: center;    /* 中央 */
+    align-items: flex-start;
+}
+.flex_item {
+    padding: 20px;
+    color: #000;                /* 文字色 */
+    margin: 20px;               /* 外側の余白 */
+    border-radius: 5px;         /* 角丸指定 */
+    flex: 1;                    /* 均等幅 */
+    background-color: #C9E4F5;  /* 背景色指定 */
+}
+.items{
+    padding: 0;
+    list-style: none;
+    color: #000;                /* 文字色 */
+    margin: 10px;               /* 外側の余白 */
+    border-radius: 5px;         /* 角丸指定 */
+    background-color: #fff;     /* 背景色指定 */
+}
+.items a{
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.items a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+/* 進捗状況％バー */
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40%;
+  height: 20px;
+  margin-left: 20px;
+}
+::-webkit-progress-value {      /* 達成率の編集 */
+  background-color: #C9E4F5;    /* 色の変更 */
+}
+
+/* カテゴリ */
+.right {
+    text-align: right;
+}
+.priority {
+    display: inline-block;
+    border-radius: 50px;
+    padding: 10px;
+    background-color: #eee
+}
+

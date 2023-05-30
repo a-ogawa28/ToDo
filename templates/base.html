@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}演習todo{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'todo/style.css' %}">
+</head>
+<body>
+    <nav id="menu">
+        <a href="{% url 'todo:todo_list' %}">Task一覧</a>
+        <a href="{% url 'todo:todo_status' %}">進捗状況一覧</a>
+        <a href="{% url 'todo:todo_create' %}">Task新規作成</a>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Task一覧（全{{ todo_count }}件）</h1>
+<form method="GET">
+    {{ form.as_div  }}<button type="submit">検索</button>
+</form>
+{% for todo in todo_list %}
+    <div>
+        <a href="{% url 'todo:todo_detail' todo.id %}"><b>{{ todo.title }}</b></a>
+        {% if todo.deadline is not None %}
+            <span>---〆切：{{ todo.deadline | date:"Y/m/d H:i"}}</span>
+        {% endif %}
+        <div>
+            {% if todo.category is not None %}
+                {{ todo.category }}
+            {% endif %}
+        </div>
+        <div>
+            更新日時：{{ todo.updated_at }}
+        </div>
+    </div>
+    <hr>
+{% endfor %}
+
+<!--ページネーション-->
+<div id="page">
+    {% load mytags %}
+    {% if page_obj.has_previous %}
+        <a href="?{%  url_replace request 'page' page_obj.previous_page_number %}">前のページへ</a>
+    {% endif %}
+
+    {% for link_page in page_obj.paginator.page_range %}
+        {% if link_page == page_obj.number %}
+            <span>{{ link_page }}</span>
+        {% else %}
+        <a href="?{%  url_replace request 'page' link_page %}">{{ link_page }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?{%  url_replace request 'page' page_obj.next_page_number %}">次のページへ</a>
+    {% endif %}
+</div>
+<!--/ページネーション-->
+{{ todo_count }} 件中 {{ todo_list.count }} 件を表示
+{% endblock %}

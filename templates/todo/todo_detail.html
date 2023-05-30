@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>詳細</h1>
+    <h2><b>{{ todo.title }}</b></h2>
+    <p>作成日時：{{ todo.created_at }}</p>
+    <p>更新日時：{{ todo.updated_at }}</p>
+    <a href="{% url 'todo:todo_update' todo.pk %}">更新</a>
+    <a href="{% url 'todo:todo_delete' todo.pk %}">削除</a>
+    <table>
+        <tr><th>進捗状況：</th><td>{{ todo.status }}</td></tr>
+        <tr><th>カテゴリ：</th><td>{{ todo.category }}</td></tr>
+        <tr><th>締め切り：</th><td>{{ todo.deadline }}</td></tr>
+        <tr><th>内容説明：</th><td>{{ todo.content | linebreaksbr }}</td></tr>
+    </table>
+    <a href="{% url 'todo:reply_create' todo.pk %}">コメント</a>
+    {% for reply in todo.reply_set.all %}
+        <div>
+            ↪ {{ reply.created_at | date:'Y/m/d H:i s秒'}}<br>{{ reply.comment | linebreaksbr }}
+        </div>
+    {% endfor %}
+{% endblock %}
