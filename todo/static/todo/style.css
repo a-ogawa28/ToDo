@@ -112,6 +112,7 @@ table td{
     margin: 0;
     border-radius: 10px;
     border: 2px solid #eee;
+    height: 100%
 }
 .comment{
     padding: 0px;
