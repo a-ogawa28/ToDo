@@ -17,6 +17,7 @@
 #menu {
     background-color: #eee;
     padding: 10px;
+    margin-bottom: 10px;
 }
 #menu a{
     color: inherit;
@@ -29,6 +30,31 @@
 nav ul li{
     display: inline-block;
     margin: 0 20px;
+}
+
+form{
+    margin: auto;
+    width: 70%;
+    background: #eee;
+    border-radius: 10px;
+}
+input, textarea, select{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+}
+input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+textarea:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+select:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
 }
 
 table{
@@ -59,9 +85,6 @@ table td{
 .create_table td{
     width: 50%;
 }
-.create_table tr:nth-child(odd){
-    background-color: #eee;
-}
 .detail_table{
     float: left;
 }
@@ -84,6 +107,12 @@ table td{
     float: left;
     width: 40%;
 }
+.comment_area{
+    padding: 10px;
+    margin: 0;
+    border-radius: 10px;
+    border: 2px solid #eee;
+}
 .comment{
     padding: 0px;
     margin: 10px 0px;
@@ -102,10 +131,11 @@ table td{
     border-radius: 5px;         /* 角丸指定 */
     justify-content: center;    /* 中央 */
     align-items: flex-start;
+    padding-bottom: 10px;
 }
 .flex_item {
     padding: 10px;
-    margin: 20px;               /* 外側の余白 */
+    margin: 20px 20px 0px 0px;  /* 外側の余白 */
     color: #000;                /* 文字色 */
     border-radius: 5px;         /* 角丸指定 */
     flex: 1;                    /* 均等幅 */

@@ -31,7 +31,7 @@ class TodoUpdateForm(forms.ModelForm):
 
 class TodoSearchForm(forms.Form):
     keyword = forms.CharField(
-        label='キーワード', required=False,
+        label='キーワードを入力', required=False,
         widget=forms.TextInput(attrs={'placeholder': 'キーワードで検索します'})
     )
 

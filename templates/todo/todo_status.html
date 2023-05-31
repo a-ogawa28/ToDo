@@ -3,15 +3,15 @@
 {% block content %}
 <div class="center">
     <h1>進捗状況</h1>
-
-
     <progress value="{{ done_count }}" max="{{ todo_count }}"></progress>{{ done_count }}/{{ todo_count }}
-    <script>
-        document.write(Math.round({{ done_count }}/{{ todo_count }}*100),'%');
-    </script>
+    <h2>
+        <script>
+            document.write(Math.round({{ done_count }}/{{ todo_count }}*100),'%');
+        </script>
+    </h2>
     <div class="flex_box">
         <div class="flex_item">
-            <h2>Waitingタスク</h2>
+            <h3>Waitingタスク</h3>
             <p>（{{ waiting_count }}件）</p>
             {% for todo in waiting_list %}
                 <ul class="items"><li>
@@ -30,7 +30,7 @@
             {% endfor %}
         </div>
         <div class="flex_item">
-            <h2>Workingタスク</h2>
+            <h3>Workingタスク</h3>
             <p>（{{ working_count }}件）</p>
             {% for todo in working_list %}
                 <ul class="items"><li>
@@ -49,7 +49,7 @@
             {% endfor %}
         </div>
         <div class="flex_item">
-            <h2>Doneタスク</h2>
+            <h3>Doneタスク</h3>
             <p>（{{ done_count }}件）</p>
             {% for todo in done_list %}
                 <ul class="items"><li>

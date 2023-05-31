@@ -17,11 +17,13 @@
             <a href="{% url 'todo:todo_update' todo.pk %}">更新</a>
             <a href="{% url 'todo:todo_delete' todo.pk %}">削除</a>
             <a href="{% url 'todo:reply_create' todo.pk %}">コメント</a>
-            {% for reply in todo.reply_set.all %}
-                <div class="comment">
-                    ↪ {{ reply.created_at | date:'Y/m/d H:i s秒'}}<br>{{ reply.comment | linebreaksbr }}
-                </div>
-            {% endfor %}
+            <div class="comment_area">
+                {% for reply in todo.reply_set.all %}
+                    <div class="comment">
+                        ↪ {{ reply.created_at | date:'Y/m/d H:i s秒'}}<br>{{ reply.comment | linebreaksbr }}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
