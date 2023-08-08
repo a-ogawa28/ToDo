@@ -1,0 +1,30 @@
+[
+  {
+    "model": "todo.priority",
+    "pk": 1,
+    "fields": {
+      "priority_name": "緊急"
+    }
+  },
+  {
+    "model": "todo.priority",
+    "pk": 2,
+    "fields": {
+      "priority_name": "高"
+    }
+  },
+  {
+    "model": "todo.priority",
+    "pk": 3,
+    "fields": {
+      "priority_name": "中"
+    }
+  },
+  {
+    "model": "todo.priority",
+    "pk": 4,
+    "fields": {
+      "priority_name": "低"
+    }
+  }
+]
